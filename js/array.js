@@ -65,6 +65,29 @@ console.log('El precio es maximo es:', valorMax);
 let valorMin=Math.min(...precios);
 console.log('El precio minimo es:', valorMin);
 
+//recorrer un array
+
+//1: 
+for(let i=0; i<precios.length; i++){
+    console.log(precios[i])
+};
+
+//2:
+precios.forEach(element => {
+    console.log(element);
+});
+
+//3:
+const newPrecios=precios.map(element=>{
+    console.log(element);
+    return element
+});
+
+console.log(newPrecios);
+//4:
+for (const value of newPrecios) {
+    console.log(value);
+};
 
 //ORDENAR ARRAY
 

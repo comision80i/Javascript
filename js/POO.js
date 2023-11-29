@@ -35,14 +35,31 @@ console.log(nombre1+apellido1+edad);
 const profesor={
     nombre: 'Alan',
     apellido:'Chibilisco',
-    edad:35
+    edad:35,
+
+    saludar(){
+        console.log('Hola soy el profesor: ' + this.nombre );
+    },
+
+    mostrarInformacion(){
+        console.log(`Hola mi nombre es ${this.nombre}, mi apellido es ${this.apellido} y mi edad es ${this.edad}`);
+    }
 };
 
 const tutor={
     nombre:'Valentin',
     apellido:'Quiroga',
-    edad:27
+    edad:27,
+    saludar(){
+        console.log('Hola soy el tutor: ' + this.nombre );
+    }
 }
+
+const profesor2={
+    nombre: 'Alan',
+    apellido:'Chibilisco',
+    edad:35
+};
 
 console.log('Este es el objeto profesor-->', profesor);
 console.log('Este es el objeto tutor-->', tutor);
@@ -77,3 +94,51 @@ console.log('Profesor modificado-->', profesor);
  delete profesor.sexo;
 
 console.log('Profesor con prop.sexo eliminado-->', profesor);
+
+
+//COMPARAR OBJETOS
+let a=1;
+let b=1;
+console.log(a===b);
+
+console.log('profesor==tutor',profesor==tutor);//false
+console.log('profesor==profesor2',profesor.nombre==profesor2.nombre);//true
+console.log('profesor==profesor2',profesor==profesor2);//false
+
+const profesor1=profesor;
+
+console.log('profesor1==profesor',profesor1===profesor);//true
+
+
+//RECORRER LAS PROPIEDADES DE UN OBJETO
+
+for (const value in profesor) {
+    console.log(profesor[value]);   
+};
+
+//UTILIZAR LOS METODOS DE UN OBEJTO
+
+profesor.saludar();
+
+tutor.saludar();
+
+profesor1.saludar();
+
+
+profesor.mostrarInformacion();
+
+
+//Funcion Constructora
+
+function Auto(marca, color){
+    this.brand=marca;
+    this.colour=color;
+}
+
+
+const ford=new Auto('ford', 'azul');
+console.log(ford);
+
+const fiat=new Auto('FIAT','NEGRO');
+
+console.log(fiat);
