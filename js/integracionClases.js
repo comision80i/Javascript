@@ -39,7 +39,11 @@ class Alumno extends Persona {
 
 class Sistema {
   constructor() {
-    this.almacenamiento = [];
+    const lsValue=localStorage.getItem('almacenamiento');
+    if (lsValue!==null) {
+      const array=JSON.parse(lsValue);
+      this.almacenamiento = array;
+    }
   }
 
   existeUsuario(usuario) {
@@ -110,6 +114,7 @@ const system=new Sistema();
 
 do {
     let opcion=parseInt(prompt('Seleccione una opcion, 1-CREAR MENTOR, 2-CREAR ALUMNO, 3-LISTAR TODO, 4-LISTAR MENTORES, 5-LISTAR ALUMNOS'));
+
     switch (opcion) {
         case 1:
             let nombreM=prompt('Ingrese el nombre');
@@ -131,9 +136,27 @@ do {
         case 3:
             system.listarTodo();
             break;
+        case 4:
+            system.listarMentor();
+          break;    
+        case 5:
+          system.listarAlumnos();
+          break;
         default:
             console.error(`OPCION INGRESADA INVALIDA: INGRESO--> ${opcion}`);
             break;
     }
 } while (confirm('¿Desea continuar operando?'));
 
+
+console.log('###Alamcenamiento-->',system.almacenamiento);
+
+localStorage.setItem('almacenamiento',JSON.stringify(system.almacenamiento));
+/**
+ * PASOS:
+ * 1-COMPROBAR SI EXISTE UN LS ALMACENADO --> localStorage.getItem(almacenamiento); string | null
+ * 1-a-si es string necesito convertirlo de nuevo a un array --> JSON.parse[resultado localStorage];
+ * 1-b-si es null necesitamos crear localStorage --> localStorage.setItem('almacenamiento', JSON.stringify([]));
+ * 
+ * 
+ */
