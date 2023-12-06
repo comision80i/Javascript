@@ -39,11 +39,15 @@ class Alumno extends Persona {
 
 class Sistema {
   constructor() {
-    const lsValue=localStorage.getItem('almacenamiento');
+    /*const lsValue=localStorage.getItem('almacenamiento');
     if (lsValue!==null) {
       const array=JSON.parse(lsValue);
       this.almacenamiento = array;
-    }
+      console.log(this.almacenamiento);
+    }else{
+      this.almacenamiento=[]
+    }*/
+    this.almacenamiento=JSON.parse(localStorage.getItem('almacenamiento')) || [];
   }
 
   existeUsuario(usuario) {
@@ -75,12 +79,21 @@ class Sistema {
     }
   };
 
+  mostrarInformacion(object){
+    let str='';
+    for (const key in object) {
+     str+=` ${key.toUpperCase()}: ${object[key]} `
+    }
+    return str;
+  }
+
   listarTodo(){
     if (this.almacenamiento.length===0) {
         console.log('Aun no existen registros');
     }else{        
         this.almacenamiento.forEach((element, index)=>{
-            console.log(`${index+1}: ${element.mostrarInformacion()}`);
+            //console.log(`${index+1}: ${element.mostrarInformacion()}`);
+            console.log(`${index+1}: ${this.mostrarInformacion(element)}`);
         });
     }
   };
@@ -89,7 +102,7 @@ class Sistema {
     const mentores=this.almacenamiento.filter((element)=>element.rol==='Mentor');
     if (mentores.length>0) {
         mentores.forEach((element, index)=>{
-            console.log(`${index+1}: ${element.mostrarInformacion()}`);
+            console.log(`${index+1}: ${this.mostrarInformacion(element)}`);
         })
     }else{
         console.log('Aun no hay registros de MENTORES');
@@ -100,7 +113,7 @@ class Sistema {
     const alumnos=this.almacenamiento.filter((element)=>element.rol==='Alumno');
     if (alumnos.length>0) {
         alumnos.forEach((element, index)=>{
-            console.log(`${index+1}: ${element.mostrarInformacion()}`);
+            console.log(`${index+1}: ${this.mostrarInformacion(element)}`);
         })
     }else{
         console.log('Aun no hay registros de ALUMNOS');
