@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta>
+    <meta>
+    <meta>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <title>Cronometro</title>
+</head>
+<body class="bg-dark text-light">
+    <main class="my-5 container">
+        <h1 class="text-center">Cronometro</h1>
+        <hr>
+        <p class="text-center fs-1" id="pantallaCronometro">00:00:00</p>
+        <hr>
+        <div class="container text-center d-flex justify-content-evenly">
+            <button class="btn btn-primary" type="button" onclick="Iniciar()">Iniciar</button>
+            <button class="btn btn-warning" type="button" onclick="Pausar()">Pausar</button>
+            <button class="btn btn-danger" type="button" onclick="Reiniciar()">Reiniciar</button>
+        </div>
+    </main>
+
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/cronometro.js"></script>
+</body>
+</html>
